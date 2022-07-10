@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/atm")
+@RequestMapping("api/v1/atm")
 public class ATMController {
 
 
@@ -16,8 +16,8 @@ public class ATMController {
     private ATMService atmService;
 
     @GetMapping(path = {"/{value}"})
-    public int[] cashValue(@PathVariable(name="value") Integer value) {
-        return atmService.getNotes(value);
+    public int[] getNotes(@PathVariable(name="value") Integer amountToCash) {
+        return atmService.getNotes(amountToCash);
     }
 
 }
