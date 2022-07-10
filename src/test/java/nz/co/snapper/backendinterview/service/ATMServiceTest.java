@@ -7,6 +7,26 @@ import static org.junit.jupiter.api.Assertions.*;
 class ATMServiceTest {
 
     ATMService atmService = new ATMService();
+    @Test
+    void given_value_zero_should_return_exception() {
+        String expectedMessage = "Value to cash can not be 0";
+        try {
+            atmService.getNotes(0);
+        } catch (UnsupportedOperationException exception) {
+            assertEquals(expectedMessage, exception.getMessage());
+        }
+
+    }
+
+    @Test
+    void given_value_not_multiple_of_5_should_return_exception() {
+        String expectedMessage = "Value to cash can only be multiple of 5";
+        try {
+            atmService.getNotes(17);
+        } catch (UnsupportedOperationException exception) {
+            assertEquals(expectedMessage, exception.getMessage());
+        }
+    }
 
     @Test
     void given_valid_amount_should_return_max_unique_notes() {
