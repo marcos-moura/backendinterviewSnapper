@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/atm")
 public class ATMController {
@@ -16,7 +18,7 @@ public class ATMController {
     private ATMService atmService;
 
     @GetMapping(path = {"/{value}"})
-    public int[] getNotes(@PathVariable(name="value") Integer amountToCash) {
+    public List<Integer> getNotes(@PathVariable(name="value") Long amountToCash) {
         return atmService.getNotes(amountToCash);
     }
 
